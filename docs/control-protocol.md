@@ -315,6 +315,15 @@ labels; `prefs:measure_axis_distances` identifies the checkbox.
 | `ui.resize` | `width`, `height` | |
 | `app.quit` | `force?` (quit without asking about unsaved designs) | `quitting` (the window closes), `asking` (a "save changes?" prompt is open) |
 
+For an ACP agent advertising configuration options, `ui.agent_chat` also accepts
+`{"config_option": {"id": "effort", "value": "high"}}`. Use an option ID and choice value
+from its reported `configOptions`; IDs and available values belong to the agent. The reply's
+`configOptions` is `null` for a legacy agent, or the current list of supported select options
+(including an empty list when none remain). `configPending` is true while a selection waits for
+the agent's reply. Read the confirmed state after that reply; submitting a change is not its
+confirmation. The existing `model` and `mode` inputs use the corresponding configuration option
+when advertised, and retain their existing behavior for agents using legacy lists or API endpoints.
+
 ### `ui.prefs` settings
 
 One setting per line, sorted by name. A change that adds a setting adds its own line in order, so two such changes only meet when their settings are neighbours.
