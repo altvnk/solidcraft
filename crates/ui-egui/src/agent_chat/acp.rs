@@ -431,7 +431,14 @@ pub enum Incoming {
         text: String,
     },
     /// A new tool call, or news about one (`title`/`status` when they changed).
-    Tool { id: String, title: Option<String>, kind: Option<String>, status: Option<ToolStatus>, input: Option<Value>, output: Option<String> },
+    Tool {
+        id: String,
+        title: Option<String>,
+        kind: Option<String>,
+        status: Option<ToolStatus>,
+        input: Option<Value>,
+        output: Option<String>,
+    },
     /// The agent's plan: each entry with its status.
     Plan(Vec<(String, String)>),
     /// The agent asks before running a tool call; answered with [`permission_reply`].
